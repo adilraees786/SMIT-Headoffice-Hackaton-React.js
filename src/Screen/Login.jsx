@@ -15,9 +15,12 @@ const LoginPage = () => {
   // const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
+  const [isLoading, setIsLoading] = useState(true)
 
   function handlesigin(e) {
     e.preventDefault();
+    setIsLoading(true)
+
 
 
     signInWithEmailAndPassword(auth, email, password)
@@ -38,7 +41,7 @@ const LoginPage = () => {
       .catch((error) => {
         // const errorCode = error.code;
         const errorMessage = error.message;
-      
+
 
         Swal.fire({
           title: 'Something Went Wrong ',
@@ -84,13 +87,25 @@ const LoginPage = () => {
             required
           />
         </div>
-        <button
+        {/* <button
           type="submit"
           onClick={handlesigin}
           className="w-full bg-indigo-500 text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
           Login
-        </button>
+        </button> */}
+        {isLoading ?
+          <div className="inline-flex w-full items-center justify-center rounded-md bg-red-400 px-3.5 py-2.5 font-semibold leading-7 text-white" disabled>
+            <img src="https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/4X/a/0/4/a047bb6e4236686095168948698596f6ceb059e8.gif" className="w-8 h-8 object-cover scale-125 text-white bg-white" alt="" />
+          </div>
+          :
+
+          <button type="button"
+            onClick={handleLogin}
+            className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white" >
+            Get started
+          </button>
+        }
 
         <div className='mt-6 text-center flex justify-between'>
           <a

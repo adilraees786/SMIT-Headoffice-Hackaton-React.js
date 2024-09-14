@@ -1,6 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
  import  Home  from "./Screen/Home";
- import Notfound from "./Screen/Notfound";
  import Signup from "./Screen/Signup";
  import Login from "./Screen/Login";
  import Navbar from "./components/Navbar";
@@ -8,14 +7,15 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
  import Chat from "./Screen/Chat"
 
 import BloodDonorForm from "./components/RegisterDonar";
+import NotFound from "./Screen/Notfound";
+import Loading from "./Screen/Loading";
 
 export default function App() {
 
    const router = createBrowserRouter([
-
-      { path: "/", element: <Home />, },
+      { path: "*", element: <NotFound />, },
+      { path: "/", element: <Loading />, },
       { path: "/home", element: <Home />, },
-      { path: "/notfound", element: <Notfound />, },
       { path: "/login", element: <Login />, },
       { path: "/signup", element: <Signup />, },
       { path: "/navbar", element: <Navbar />, },
